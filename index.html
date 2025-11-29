@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Phillip's Workshop — Coming Dec 1</title>
+    <style>
+        :root{
+            --card-bg: rgba(255,255,255,0.9);
+            --accent: #c0282d;
+            --muted: #5b5b5b;
+            --glass: rgba(255,255,255,0.7);
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        html,body{height:100%; margin:0;}
+        body{
+            /* Background placeholder: drop your Christmas background image at images/christmas-bg.jpg */
+            background: center/cover no-repeat url("images/christmas-bg.jpg"), linear-gradient(180deg,#0f2b2d 0%, #123 100%);
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            padding:24px;
+            color:#111;
+        }
+
+        .stage{
+            width:100%;
+            max-width:1000px;
+            background: linear-gradient(180deg, rgba(159, 231, 157, 0.92), rgba(156, 232, 160, 0.85));
+            border-radius:16px;
+            box-shadow: 0 10px 30px rgba(2,8,20,0.45);
+            overflow: hidden;
+        }
+
+        header{
+            padding:28px 28px 18px 28px;
+            display:flex;
+            gap:18px;
+            align-items:center;
+        }
+
+        .avatar{
+            width:150px;
+            height:150px;
+            flex: 0 0 110px;
+            border-radius:12px;
+            background: var(--glass);
+            display:grid;
+            place-items:center;
+            overflow:hidden;
+        }
+
+        .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+        .title{
+            flex:1;
+        }
+        .title h1{
+            margin:0;
+            font-size:clamp(18px,3.4vw,28px);
+            color:var(--accent);
+            letter-spacing: -0.5px;
+        }
+        .title p{ margin:6px 0 0 0; color:var(--muted); font-size:14px; }
+
+        .countdown{
+            margin-left:auto;
+            text-align:right;
+            font-variant-numeric: tabular-nums;
+        }
+        .countdown .number{
+            display:block;
+            font-size:28px;
+            color:#0b6b3a;
+            font-weight:700;
+        }
+        .countdown .label{ font-size:12px; color:var(--muted); }
+
+        main{
+            padding:20px 28px 28px 28px;
+        }
+
+        .grid{
+            display:grid;
+            grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+            gap:16px;
+        }
+
+        .card{
+            background:linear-gradient(180deg, rgba(201, 236, 187, 0.95), rgba(196, 231, 182, 0.95));
+            border-radius:12px;
+            padding:12px;
+            box-shadow: 0 6px 14px rgba(10,20,40,0.06);
+            min-height:200px;
+            display:flex;
+            flex-direction:column;
+            gap:4px;
+        }
+
+        .card img{
+            width:100%;
+            height:260px;
+            object-fit:cover;
+            border-radius:8px;
+            background:#eee;
+        }
+
+        .card h3{ margin:6px 0 0 0; font-size:16px; color:#7d1a1f; }
+        .card p{ margin:6px 0 0 0; color:var(--muted); font-size:14px; flex:1; }
+
+        footer{
+            padding:12px 28px;
+            font-size:13px;
+            color:var(--muted);
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:12px;
+            border-top:1px solid rgba(0,0,0,0.04);
+        }
+
+        .small{ font-size:12px; color:#666; }
+
+        /* tiny festive accent */
+        .star{
+            width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#ffd35b,#ffd96f);
+            display:inline-grid; place-items:center; color:#8a4b00; font-weight:700; box-shadow:0 4px 10px rgba(200,120,0,0.12);
+        }
+
+        @media (max-width:520px){
+            header{ gap:12px; padding:18px; }
+            main{ padding:16px; }
+            .avatar{ width:88px;height:88px; flex:0 0 88px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stage" role="main" aria-label="Phillip's Workshop Announcement">
+        <header>
+            <div class="avatar" aria-hidden="true">
+                <!-- Replace with your elf image: images/phillip-avatar.png -->
+                <img src="images\Phillip-gifts1.png" alt="Phillip the elf (placeholder)">
+            </div>
+            <div class="title">
+                <h1>Hi Charlotte & Violet - I'm coming back!</h1>
+                <h3>I've been busy in the workshop getting ready to visit you on December 1st.</h3>
+            </div>
+
+            <div class="countdown" aria-live="polite">
+                <span class="number" id="days-remaining">--</span>
+                <span class="label">days until Phillip arrives</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="grid" aria-label="Phillip's workshop activities">
+                <!-- Activity card 1 -->
+                <article class="card">
+                    <!-- Replace with activity image: images/activity1.jpg -->
+                    <img src="images\Phillip-workshop2.png" alt="Phillip making toys (placeholder)">
+                    <h3>Making Tiny Toys</h3>
+                    <p>Hard at work making toys.</p>
+                </article>
+
+                <!-- Activity card 2 -->
+                <article class="card">
+                    <!-- Replace with activity image: images/activity2.jpg -->
+                    <img src="images\Phillip-workshop3.png" alt="Phillip wrapping gifts (placeholder)">
+                    <h3>Wrapping Presents</h3>
+                    <p>It's not easy, but someone has to do it!</p>
+                </article>
+
+                <!-- Activity card 3 -->
+                <article class="card">
+                    <!-- Replace with activity image: images/activity3.jpg -->
+                    <img src="images\Phillip-workshop1.png  " alt="Phillip checking the list (placeholder)">
+                    <h3>Quality Check!</h3>
+                    <p>Santa has to check our progress to make sure we're doing a good job.</p>
+                </article>
+
+                <!-- Add more cards as needed -->
+            </div>
+        </main>
+
+        <footer>
+            <h2>I can't wait to see you!</h2>
+            <div style="display:flex;gap:10px;align-items:center;">
+                <div class="star" aria-hidden="true">★</div>
+                <div class="small">Phillip's Workshop</div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Simple countdown to next December 1st. Edit arrival month/day if you prefer.
+        (function(){
+            const daysEl = document.getElementById('days-remaining');
+
+            function daysUntilDecFirst(){
+                const now = new Date();
+                const year = now.getFullYear();
+                const targetThisYear = new Date(year, 11, 1); // month is 0-based: 11 = December
+                let target = targetThisYear;
+                // If today is after Dec 1 (strictly), show next year's Dec 1
+                // If today is exactly Dec 1, show 0
+                if (now > targetThisYear) {
+                    target = new Date(year + 1, 11, 1);
+                }
+                // compute diff in days (floor)
+                const msPerDay = 1000*60*60*24;
+                const diff = Math.ceil((target - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / msPerDay);
+                return diff;
+            }
+
+            function update(){
+                const d = daysUntilDecFirst();
+                if (d === 0) {
+                    daysEl.textContent = "0";
+                    daysEl.nextElementSibling && (daysEl.nextElementSibling.textContent = "days — he's here today!");
+                } else if (d === 1) {
+                    daysEl.textContent = "1";
+                    daysEl.nextElementSibling && (daysEl.nextElementSibling.textContent = "day until Phillip arrives");
+                } else {
+                    daysEl.textContent = String(d);
+                    daysEl.nextElementSibling && (daysEl.nextElementSibling.textContent = "days until Phillip arrives");
+                }
+            }
+
+            update();
+            // Update at midnight local time in case they keep the page open
+            setInterval(update, 1000 * 60 * 60); // hourly is enough
+        })();
+    </script>
+</body>
+</html></div>
