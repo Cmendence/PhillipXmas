@@ -142,8 +142,8 @@
                 <img src="images\Phillip-gifts1.png" alt="Phillip the elf (placeholder)">
             </div>
             <div class="title">
-                <h1>Hi Charlotte & Violet - I'm coming back!</h1>
-                <h3>I've been busy in the workshop getting ready to visit you on December 1st.</h3>
+                <h1>It's good to be back!</h1>
+                <h3>Let's see what trouble we can get into... </h3>
             </div>
 
             <div class="countdown" aria-live="polite">
@@ -183,7 +183,7 @@
         </main>
 
         <footer>
-            <h2>I can't wait to see you!</h2>
+            <!-- <h2>I can't wait to see you!</h2> -->
             <div style="display:flex;gap:10px;align-items:center;">
                 <div class="star" aria-hidden="true">★</div>
                 <div class="small">Phillip's Workshop</div>
@@ -204,7 +204,7 @@
                 // If today is after Dec 1 (strictly), show next year's Dec 1
                 // If today is exactly Dec 1, show 0
                 if (now > targetThisYear) {
-                    target = new Date(year + 1, 11, 1);
+                    target = new Date(year , 11, 25);
                 }
                 // compute diff in days (floor)
                 const msPerDay = 1000*60*60*24;
@@ -219,10 +219,10 @@
                     daysEl.nextElementSibling && (daysEl.nextElementSibling.textContent = "days — he's here today!");
                 } else if (d === 1) {
                     daysEl.textContent = "1";
-                    daysEl.nextElementSibling && (daysEl.nextElementSibling.textContent = "day until Phillip arrives");
+                    daysEl.nextElementSibling && (daysEl.nextElementSibling.textContent = "Days until Christmas!");
                 } else {
                     daysEl.textContent = String(d);
-                    daysEl.nextElementSibling && (daysEl.nextElementSibling.textContent = "days until Phillip arrives");
+                    daysEl.nextElementSibling && (daysEl.nextElementSibling.textContent = "Days until Christmas!");
                 }
             }
 
