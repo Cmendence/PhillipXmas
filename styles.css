@@ -91,25 +91,30 @@ header {
   font-size: 14px;
 }
 
-/* Countdowns still exist in CSS for index.html, but gallery won't display them */
-.countdown {
+/.countdown {
   margin-left: auto;
-  text-align: right;
+  text-align: center;      /* center numbers in header if space allows */
   font-variant-numeric: tabular-nums;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 140px;
 }
 
 .countdown .number {
   display: block;
-  font-size: 28px;
+  font-size: clamp(24px, 3vw, 36px);  /* bigger and responsive */
   color: #0b6b3a;
   font-weight: 700;
+  letter-spacing: -1px;
 }
 
 .countdown .label {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
+  margin-top: 4px;
 }
-
 /* ----------------------------------------
    GRID CARDS (index.html main section)
 ----------------------------------------- */

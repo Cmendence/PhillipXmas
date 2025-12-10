@@ -21,10 +21,18 @@
         <h3 class="gallery-subtitle">Let's see what trouble we can get into…</h3>
       </div>
 
-      <div class="countdown">
-        <span class="number" id="days-remaining">--</span>
-        <span class="label">days until Phillip arrives</span>
-      </div>
+
+
+<div class="countdown">
+  <span class="number" id="days-remaining">--</span>
+  <span class="label">days until Christmas!</span>
+
+  <!-- TEMP: show button for testing -->
+  <!-- <button id="scavenger-btn" style="display:inline-block; margin-top:10px; padding:10px 16px; border:none; border-radius:8px; background:#c0282d; color:#fff; font-weight:700; cursor:pointer;">
+    Start the Scavenger Hunt!
+  </button> -->
+</div>
+
     </header>
 
     <!-- MAIN CONTENT -->
@@ -68,43 +76,64 @@
 
   <!-- COUNTDOWN SCRIPT -->
   <script>
-    (function () {
-      const daysEl = document.getElementById('days-remaining');
+  (function () {
+    const countdownEl = document.querySelector('.countdown');
+    const daysEl = document.getElementById('days-remaining');
+    const labelEl = daysEl.nextElementSibling;
 
-      function daysUntilDecFirst() {
-        const now = new Date();
-        const year = now.getFullYear();
-        const targetThisYear = new Date(year, 11, 1); // December 1
-        let target = targetThisYear;
+    const scavengerButton = document.createElement('button');
+    scavengerButton.textContent = "Start the Scavenger Hunt!";
+    scavengerButton.style.marginTop = "10px";
+    scavengerButton.style.padding = "8px 16px";
+    scavengerButton.style.border = "none";
+    scavengerButton.style.borderRadius = "6px";
+    scavengerButton.style.backgroundColor = "#c0282d";
+    scavengerButton.style.color = "#fff";
+    scavengerButton.style.cursor = "pointer";
+    scavengerButton.style.fontSize = "16px";
+    scavengerButton.addEventListener('click', () => {
+      window.location.href = 'scavengerHome.html';
+    });
 
-        if (now > targetThisYear) {
-          target = new Date(year, 11, 25); // Christmas
-        }
+    function updateCountdown() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const christmas = new Date(year, 11, 25, 0, 0, 0); // Dec 25, 12:00 AM
 
-        const msPerDay = 1000 * 60 * 60 * 24;
-        const diff = Math.ceil((target - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / msPerDay);
-        return diff;
+      // If after Dec 25, countdown for next year
+      if (now > christmas) {
+        christmas.setFullYear(year + 1);
       }
 
-      function update() {
-        const d = daysUntilDecFirst();
+      const diffMs = christmas - now;
 
-        if (d === 0) {
-          daysEl.textContent = "0";
-          daysEl.nextElementSibling.textContent = "MERRY CHRISTMAS! See you again next year! ❤️";
-        } else if (d === 1) {
-          daysEl.textContent = "1";
-          daysEl.nextElementSibling.textContent = "Tomorrow's the big day!";
-        } else {
-          daysEl.textContent = d;
-          daysEl.nextElementSibling.textContent = "Days until Christmas!";
+      if (diffMs <= 0) {
+        // It's Christmas!
+        daysEl.textContent = "0";
+        labelEl.textContent = "MERRY CHRISTMAS! 🎄";
+        if (!document.body.contains(scavengerButton)) {
+          countdownEl.appendChild(scavengerButton);
         }
+        return;
       }
 
-      update();
-      setInterval(update, 1000 * 60 * 60); // update every hour
-    })();
-  </script>
+      const totalSeconds = Math.floor(diffMs / 1000);
+      const days = Math.floor(totalSeconds / (3600 * 24));
+      const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
 
+      daysEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      labelEl.textContent = "until Christmas!";
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000); // update every second
+  })();
+
+//    document.getElementById('scavenger-btn').addEventListener('click', () => {
+//     window.location.href = "scavengerHome.html";
+//   });
+</script>
 </body>
 </html>
