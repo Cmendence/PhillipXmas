@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Phillip's Gallery</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="stage" role="main" aria-label="Phillip's Gallery">
+    <header class="header">
+      <!-- optional avatar on the left; remove if you prefer centered header -->
+      <div class="avatar" aria-hidden="true">
+        <img src="images/Phillip-gifts1.png" alt="Phillip the elf avatar">
+      </div>
+
+      <div class="gallery-title-wrapper">
+        <h1 class="gallery-title">Phillip's Shenanigans Gallery</h1>
+        <p class="gallery-subtitle">A look back at all of Phillip's adventures</p>
+      </div>
+    </header>
+
+    <!-- MAIN: masonry gallery container -->
+    <main class="gallery-container" id="gallery" aria-live="polite" aria-label="Gallery of Phillip images">
+      <!-- JS will populate cards here -->
+      <noscript>
+        <p style="padding:16px;color:var(--muted);">JavaScript is disabled — images won't load automatically. Add images manually here or enable JS.</p>
+      </noscript>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="star">★</div>
+        <div class="small">Phillip's Workshop</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // List your images in the slideshow folder (forward slashes)
+    const imageList = [
+      'slideshow/Phillip1.jpg',
+      'slideshow/Phillip2.jpg',
+      'slideshow/Phillip3.jpg',
+      'slideshow/Phillip4.jpg',
+      'slideshow/Phillip5.jpg',
+      'slideshow/Phillip6.jpg',
+      'slideshow/Phillip7.jpg'
+    ];
+
+    const galleryContainer = document.getElementById('gallery');
+
+    function createCard(src, altText = 'Phillip being silly') {
+      const card = document.createElement('div');
+      card.className = 'gallery-card';
+
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = altText;
+      img.loading = 'lazy';           // lazy-load images for performance
+      img.decoding = 'async';
+
+      card.appendChild(img);
+
+      return card;
+    }
+
+    // populate
+    imageList.forEach(src => {
+      // optional: check if image exists before appending (requires fetch and CORS)
+      const card = createCard(src);
+      galleryContainer.appendChild(card);
+    });
+  </script>
+</body>
+</html>
