@@ -7,7 +7,6 @@
     <title>Phillip's Scavenger Hunt</title>
     <style>
      
-
       /* -------------------------
          MODAL STYLING
       -------------------------- */
@@ -73,10 +72,16 @@
 
       <!-- MAIN HUNT AREA -->
       <main style="padding:10px ; display:flex; flex-direction:column; align-items:center; gap:12px;">
-        <img src="images/tree.png" alt="Holiday tree" style="width:200px;" />
-        <p style="font-size:16px; color: var(--muted); max-width:400px; text-align:center;">
-          Hint: <span id="hint-text">FINAL CLUE</span>
-        </p>
+        <img src="images/cuteClue2.webp" alt="Holiday tree" style="width:230px; border-radius: 10px;" />
+                <h1 style="font-weight: bold; color: #0b6b3a;">E L</h1>
+
+        <div style="font-size:14px; max-width:400px; text-align:center; padding:10px; font-weight: bold; margin-top: -20px;">
+          
+          <p>One bed is high and one is low,</p>
+          <p>This clue is not where your blankets go.</p>
+          <p>Between the two is where it'll be,</p>
+          <p>Aim your gaze up and you will see.</p>
+        </div>
 
         <div>
           <input 
@@ -111,8 +116,8 @@
 
     <!-- SCAVENGER HUNT SCRIPT -->
     <script>
-      const correctLetter = "A"; // <-- change per clue
-      const nextPage = "scavenge6.html"; // <-- change per clue
+      const correctLetter = "E"; // <-- change per clue
+      const nextPage = "scavenge-3.html"; // <-- change per clue
 
       const input = document.getElementById("letter-input");
       const submitBtn = document.getElementById("submit-btn");

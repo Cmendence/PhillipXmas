@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="styles.css" />
     <title>Phillip's Scavenger Hunt</title>
     <style>
-      
+     
+
       /* -------------------------
          MODAL STYLING
       -------------------------- */
@@ -72,10 +73,16 @@
 
       <!-- MAIN HUNT AREA -->
       <main style="padding:10px ; display:flex; flex-direction:column; align-items:center; gap:12px;">
-        <img src="images/tree.png" alt="Holiday tree" style="width:200px;" />
-        <p style="font-size:16px; color: var(--muted); max-width:400px; text-align:center;">
-          Hint: <span id="hint-text">CLUE 4</span>
-        </p>
+        <img src="images/cuteClue5.webp" alt="Holiday tree" style="width:270px; border-radius: 10px;" />
+                                  <h1 style="font-weight: bold; color: #0b6b3a;">E L E V E</h1>
+
+        <div style="font-size:14px; max-width:400px; text-align:center; padding:1px; font-weight: bold; margin-top: -20px;">
+          
+          <p>You solved each clue, each tricky spot,</p>
+          <p>You ran and searched and found a lot!</p>
+          <p>Now your journey reaches its last call,</p>
+          <p>Look where your art hangs on the wall!</p>
+        </div>
 
         <div>
           <input 
@@ -110,8 +117,8 @@
 
     <!-- SCAVENGER HUNT SCRIPT -->
     <script>
-      const correctLetter = "A"; // <-- change per clue
-      const nextPage = "scavenge4.html"; // <-- change per clue
+      const correctLetter = "N"; // <-- change per clue
+      const nextPage = "scavengerFINAL.html"; // <-- change per clue
 
       const input = document.getElementById("letter-input");
       const submitBtn = document.getElementById("submit-btn");

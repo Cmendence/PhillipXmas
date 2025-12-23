@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles.css" />
     <title>Phillip's Scavenger Hunt</title>
     <style>
-      
+
       /* -------------------------
          MODAL STYLING
       -------------------------- */
@@ -62,20 +62,25 @@
       <header class="header" style="justify-content:center; text-align:center;">
        
         <div class="title" style="flex:1;">
-          <h1 class="gallery-title">Scavenger Hunt!</h1>
+          <h1 class="gallery-title">It's time for a scavenger Hunt!</h1>
           <h3 class="gallery-subtitle">Find the hidden letter to continue</h3>
           <p style="color:var(--muted); font-size:14px; margin-top:6px;">
             Enter the correct letter to unlock the next clue!
           </p>
-        </div>
+
       </header>
 
       <!-- MAIN HUNT AREA -->
       <main style="padding:10px ; display:flex; flex-direction:column; align-items:center; gap:12px;">
-        <img src="images/tree.png" alt="Holiday tree" style="width:200px;" />
-        <p style="font-size:16px; color: var(--muted); max-width:400px; text-align:center;">
-          Hint: <span id="hint-text">[Your clue goes here]</span>
-        </p>
+        <img src="images\cuteClue1.webp" alt="Holiday tree" style="width:270px; border-radius: 10px;" />
+        <div style="font-size:14px; max-width:400px; text-align:center; padding:10px; font-weight: bold;">
+          
+          <p>Where presents wait both big and small,</p>
+          <p>With twinkling lights that softly call,</p>
+          <p>Not on the floor and not on top,</p>
+          <p>Look in the place where branches stop.</p>
+        </div>
+  
 
         <div>
           <input 
@@ -86,7 +91,7 @@
           />
           <button 
             id="submit-btn" 
-            style="padding:12px 18px; font-size:18px; border-radius:6px; border:none; background-color:var(--accent); color:#fff; cursor:pointer; margin-left:8px;"
+            style="padding:16px 18px; font-size:18px; border-radius:6px; border:none; background-color:var(--accent); color:#fff; cursor:pointer; margin-left:8px;"
           >Submit</button>
         </div>
       </main>
@@ -110,7 +115,7 @@
 
     <!-- SCAVENGER HUNT SCRIPT -->
     <script>
-      const correctLetter = "A"; // <-- change per clue
+      const correctLetter = "E"; // <-- change per clue
       const nextPage = "scavenge1.html"; // <-- change per clue
 
       const input = document.getElementById("letter-input");
