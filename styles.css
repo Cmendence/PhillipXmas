@@ -3,8 +3,8 @@
 ----------------------------------------- */
 :root {
   --card-bg: rgba(255,255,255,0.9);
-  --accent: #c0282d;
-  --muted: #5b5b5b;
+  --accent: #e80e15;
+  --muted: #ead9d9;
   --glass: rgba(255,255,255,0.7);
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -38,7 +38,7 @@ body {
 .stage {
   width: 100%;
   max-width: 1000px;
-  background: linear-gradient(180deg, rgba(159, 231, 157, 0.92), rgba(156, 232, 160, 0.85));
+  background: linear-gradient(180deg, rgba(15, 82, 13, 0.92), rgba(45, 117, 48, 0.85));
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(2,8,20,0.45);
   overflow: hidden;
@@ -105,9 +105,10 @@ header {
 .countdown .number {
   display: block;
   font-size: clamp(24px, 3vw, 36px);  /* bigger and responsive */
-  color: #0b6b3a;
+  color: #0cc163;
   font-weight: 700;
   letter-spacing: -1px;
+  -webkit-text-stroke: 1.5px black; 
 }
 
 .countdown .label {
@@ -168,6 +169,14 @@ main {
   padding: 20px 28px 28px 28px;
   column-count: 3;
   width: 100%;
+  
+}
+
+.gallery-title {
+ 
+  -webkit-text-stroke: 1px black; /* Width and color */
+  /* Standard property for future-proofing */
+
 }
 
 .gallery-card {

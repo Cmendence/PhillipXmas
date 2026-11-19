@@ -34,7 +34,7 @@
     <!-- HEADER -->
     <header class="header">
       <div class="avatar" aria-hidden="true">
-        <img src="images/Phillip-gifts1.png" alt="Phillip the elf">
+        <img src="images/beach_PX2026.jpg" alt="Phillip the elf">
       </div>
 
       <div class="title">
@@ -44,7 +44,7 @@
 
       <div class="countdown">
         <span class="number" id="countdown-display">--</span>
-        <span class="label">until Christmas!</span>
+        <span class="label">until Phillip arrives!</span>
         <div class="countdown-buttons" id="countdown-buttons" style="display:none;">
           <button id="scavenger-btn">Start the Scavenger Hunt!</button>
           <button id="gallery-btn">Gallery</button>
@@ -57,21 +57,21 @@
       <div class="grid" aria-label="Phillip's workshop activities">
 
         <article class="card">
-          <img src="images/Phillip-gifts1.png" alt="Phillip delivering gifts">
+          <img src="images/swimming_PX2026.jpg" alt="Phillip delivering gifts">
           <h3></h3>
           <p></p>
         </article>
 
         <article class="card">
-          <img src="images/Phillip-workshop2.png" alt="Phillip relaxing">
+          <img src="images/garden_PX2026.jpg" alt="Phillip relaxing">
           <h3></h3>
           <p></p>
         </article>
 
         <article class="card">
-          <img src="images/Phillip-workshop1.png" alt="Phillip checking the list">
-          <h3>Quality Check!</h3>
-          <p>Santa has to check our progress to make sure we're doing a good job.</p>
+          <img src="images/halloween_PX2026.jpg" alt="Phillip checking the list">
+          <h3></h3>
+          <p></p>
         </article>
 
       </div>
@@ -87,67 +87,94 @@
 
   </div>
 
-  <script>
-    (function(){
-      const countdownDisplay = document.getElementById('countdown-display');
-      const labelEl = countdownDisplay.nextElementSibling;
-      const buttonsContainer = document.getElementById('countdown-buttons');
-      const scavengerBtn = document.getElementById('scavenger-btn');
-      const galleryBtn = document.getElementById('gallery-btn');
-      const cardsContainer = document.getElementById('cards-container');
 
-      scavengerBtn.addEventListener('click', () => {
-        window.location.href = 'scavengerHome.html';
-      });
+<script>
+  (function(){
+    const countdownDisplay = document.getElementById('countdown-display');
+    const labelEl = countdownDisplay.nextElementSibling;
+    const buttonsContainer = document.getElementById('countdown-buttons');
+    const scavengerBtn = document.getElementById('scavenger-btn');
+    const galleryBtn = document.getElementById('gallery-btn');
+    const cardsContainer = document.getElementById('cards-container');
 
-      galleryBtn.addEventListener('click', () => {
-        window.location.href = 'gallery.html';
-      });
+    scavengerBtn.addEventListener('click', () => {
+      window.location.href = 'scavengerHome.html';
+    });
 
-      function updateCountdown(nowOverride = null){
-        const now = nowOverride || new Date();
-        const year = now.getFullYear();
-        const christmas = new Date(year, 11, 25, 0, 0, 0); // Dec 25, 12:00 AM
-        const nextYearChristmas = new Date(year + 1, 11, 25, 0, 0, 0);
+    galleryBtn.addEventListener('click', () => {
+      window.location.href = 'gallery.html';
+    });
 
-        let diffMs;
-        let isChristmas = false;
+    function updateCountdown(nowOverride = null){
+      const now = nowOverride || new Date();
+      const year = now.getFullYear();
 
-        // If today is Dec 25
-        if(now.getMonth() === 11 && now.getDate() === 25){
-          isChristmas = true;
-          diffMs = 0;
-        } else if(now > christmas){
-          diffMs = nextYearChristmas - now;
-        } else {
-          diffMs = christmas - now;
-        }
+      // December 1st - Phillip returns
+      const phillipReturns = new Date(year, 11, 1, 0, 0, 0);
 
-        if(isChristmas){
-          countdownDisplay.textContent = "🎄 Merry Christmas! 🎄";
-          labelEl.textContent = "";
-          buttonsContainer.style.display = "flex";
-          cardsContainer.style.display = "none"; // hide cards on Christmas
-        } else {
-          const totalSeconds = Math.floor(diffMs / 1000);
-          const days = Math.floor(totalSeconds / (3600*24));
-          const hours = Math.floor((totalSeconds % (3600*24)) / 3600);
-          const minutes = Math.floor((totalSeconds % 3600) / 60);
-          const seconds = totalSeconds % 60;
-          countdownDisplay.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-          labelEl.textContent = "until Christmas!";
-          buttonsContainer.style.display = "none";
-          cardsContainer.style.display = "block";
-        }
+      // Christmas Day
+      const christmas = new Date(year, 11, 25, 0, 0, 0);
+      const nextYearChristmas = new Date(year + 1, 11, 25, 0, 0, 0);
+
+      let targetDate;
+      let label;
+      let isChristmas = false;
+
+      // Determine which countdown to display
+      if(now < phillipReturns){
+        // Before December 1st: Countdown to Phillip's return
+        targetDate = phillipReturns;
+        label = "until Phillip comes back";
+      } else if(now >= phillipReturns && now < christmas){
+        // December 1st through December 24th: Countdown to Christmas
+        targetDate = christmas;
+        label = "until Christmas!";
+      } else if(now >= christmas && now < nextYearChristmas){
+        // Christmas Day
+        isChristmas = true;
+      } else {
+        // After Christmas: Countdown to next year's Christmas
+        targetDate = nextYearChristmas;
+        label = "until Christmas!";
       }
 
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
+      if(isChristmas){
+        countdownDisplay.textContent = "🎄 Merry Christmas! 🎄";
+        labelEl.textContent = "";
+        buttonsContainer.style.display = "flex";
+        cardsContainer.style.display = "none";
+      } else {
+        const diffMs = targetDate - now;
+        const totalSeconds = Math.floor(diffMs / 1000);
 
-      // --------- For Testing Only ---------
-      // Pass a Date object to simulate Christmas:
-      // updateCountdown(new Date("2025-12-25T00:00:01"));
-    })();
-  </script>
+        const days = Math.floor(totalSeconds / (3600*24));
+        const hours = Math.floor((totalSeconds % (3600*24)) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        countdownDisplay.textContent =
+          `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+        labelEl.textContent = label;
+        buttonsContainer.style.display = "none";
+        cardsContainer.style.display = "block";
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // --------- For Testing Only ---------
+    // Simulate November 30th (Phillip countdown)
+    // updateCountdown(new Date("2026-11-30T23:59:00"));
+
+    // Simulate December 1st (Christmas countdown)
+    // updateCountdown(new Date("2026-12-01T00:00:00"));
+
+    // Simulate Christmas Day
+    // updateCountdown(new Date("2026-12-25T00:00:00"));
+  })();
+</script>
+
 </body>
 </html>
